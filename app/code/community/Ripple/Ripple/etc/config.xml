@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config>
+	<frontend>
+        <routers>
+            <Ripple_callback>
+                <use>standard</use>
+                <args>
+                    <module>Ripple_Ripple</module>
+                    <frontName>Ripple_callback</frontName>
+                </args>
+            </Ripple_callback>
+        </routers>
+        <layout>			
+            <updates>
+                <Ripple>
+                    <file>Ripple.xml</file>
+                </Ripple>
+            </updates>
+        </layout>
+    </frontend>
+
+	<modules>
+	   <Ripple_Ripple>
+			<!-- for database updates -->
+		  <version>1.0.0</version>
+	   </Ripple_Ripple>
+	</modules>
+ 
+	<global>
+		<blocks>
+			<Ripple>
+				<class>Ripple_Ripple_Block</class>
+			</Ripple>
+		</blocks>
+
+		<models>
+			<Ripple>
+				<class>Ripple_Ripple_Model</class>
+				<resourceModel>Ripple_resource</resourceModel>
+			</Ripple>
+			<Ripple_resource>
+				<class>Ripple_Ripple_Model_Resource</class>
+				<entities>
+					<ipn>
+						<table>Ripple_ipns</table>
+					</ipn>
+				</entities>
+			</Ripple_resource>
+		</models>
+	 
+		<resources>
+			<Ripple_setup> <!-- keep this uppercase or you'll get duplicate errors -->
+				<setup>
+					<!-- which module to look for install/upgrade files in -->
+					<module>Ripple_Ripple</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</Ripple_setup>
+			<Ripple_write>
+				<connection>
+				  <use>core_write</use>
+				</connection>
+			</Ripple_write>
+			<Ripple_read>
+			   <connection>
+				<use>core_read</use>
+			  </connection>
+			</Ripple_read>
+		</resources>
+	</global> 
+	
+	<default>
+		<payment>
+			<Ripple>
+				<active>1</active>
+				<model>Ripple/paymentMethod</model>
+				<title>Ripple</title>
+				<payment_action>authorize</payment_action>
+			</Ripple>
+		 </payment>
+	</default>
+</config>

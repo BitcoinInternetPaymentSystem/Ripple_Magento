@@ -1,0 +1,12 @@
+<?php
+	$paymentinfo = $this->GetPaymentInfo();
+
+	if ($paymentinfo == 'paid')
+	{
+		print 'Order payment received. Place Order to complete.';
+	}
+	else
+	{
+		print '<br /><div style="text-align: center;">' . $paymentinfo . '</div>';
+	}
+?>
