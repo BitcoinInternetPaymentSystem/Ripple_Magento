@@ -37,7 +37,6 @@
 
 			foreach ($response->result->transactions as $transaction)
 			{
-				// Where to find ?dt=number ?
 				if (intval($transaction->tx->DestinationTag) == $quoteId)
 				{
 					return true;
