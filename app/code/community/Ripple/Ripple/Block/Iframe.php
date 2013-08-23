@@ -17,10 +17,10 @@
 			$quote = $this->getQuote();
 			$quoteId = $quote->getId();
 
-			$paymentinfo = 'ripple:' . Mage::getStoreConfig('payment/Ripple/Ripple_gateway') . '?amount=' . number_format($quote->getGrandTotal(), 2, '.', '') . '/' . $quote->getQuoteCurrencyCode() . '&dt=' . $quoteId;
+			$paymentinfo = Mage::getStoreConfig('payment/Ripple/Ripple_gateway') . '?amount=' . number_format($quote->getGrandTotal(), 2, '.', '') . '/' . $quote->getQuoteCurrencyCode() . '&dt=' . $quoteId;
 
 			// Qr code
-			$qr = base64_encode(file_get_contents('https://chart.googleapis.com/chart?chs=128x128&cht=qr&chl=' . $paymentinfo . '&chld=L|1&choe=UTF-8'));
+			$qr = base64_encode(file_get_contents('https://chart.googleapis.com/chart?chs=128x128&cht=qr&chl=ripple:' . $paymentinfo . '&chld=L|1&choe=UTF-8'));
 
 			Mage::register('customer_save_observer_executed',true); 
 
