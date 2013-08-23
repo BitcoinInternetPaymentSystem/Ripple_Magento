@@ -24,7 +24,7 @@
 
 			Mage::register('customer_save_observer_executed',true); 
 
-			return '<h3>' . $paymentinfo . '</h3><br /><img src="data:image/png;base64,' . $qr . '" alt="" />';
+			return '<h3><a href="ripple:' . $paymentinfo . '" title="">' . $paymentinfo . '</a></h3><br /><img src="data:image/png;base64,' . $qr . '" alt="" />';
 		}
 	}
 ?>
